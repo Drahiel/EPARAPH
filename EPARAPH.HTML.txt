@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>EPARAPH</title>
+</head>
+<body>
+	<h1 style="text-align:center;">EPARAPH</h1>
+
+	<!-- Titre de la date -->
+	<h2 style="text-align:left;">Date : <?php echo date("d/m/Y H:i"); ?></h2>
+
+	<!-- Formulaire d'upload -->
+	<form action="upload.php" method="POST" enctype="multipart/form-data">
+
+		<!-- Titre et zone de texte pour la division ou service -->
+		<h2 style="text-align:right;">Division ou service :</h2>
+		<select name="division" style="float:right;">
+			<option value="DAGEFI">DAGEFI</option>
+			<option value="DIMOPE">DIMOPE</option>
+			<option value="DIVEL">DIVEL</option>
+		</select>
+
+		<!-- Titre pour le téléversement de document -->
+		<h2>Veuillez sélectionner votre document :</h2>
+
+		<!-- Bouton pour l'upload du document -->
+		<input type="file" name="document" required>
+		<input type="submit" value="Uploader">
+
+		<!-- Message de confirmation ou d'erreur -->
+		<?php if(isset($_GET['success'])) { ?>
+			<p style="color:green;">Votre document a bien été téléversé.</p>
+		<?php } elseif(isset($_GET['error'])) { ?>
+			<p style="color:red;">Veuillez réessayer.</p>
+		<?php } ?>
+
+	</form>
+</body>
+</html>
